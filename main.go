@@ -1,5 +1,7 @@
-import "fmt"
+package main
+
+import "log"
 
 func main(){
-  fmt.Println("hello world")
+  log.Println("======= Start App =========")
 }
