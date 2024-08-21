@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"html/template"
+	"log"
+)
 
-func main(){
-  fmt.Println("======= Start App =========")
+func main() {
+	log.Println("======= Start App =========")
+	var template *template.Template
+	template.Lookup("test")
 }
