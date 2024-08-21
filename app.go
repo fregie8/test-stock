@@ -28,7 +28,6 @@ func CallHTML(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func HandlePing(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	pingStr := []byte(`{"ping":"pong"}`)
-	common.NewAjax(w, r, []byte(pingStr), http.StatusOK)
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
