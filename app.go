@@ -1,11 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
+	"github.com/urfave/negroni"
+	grace "gopkg.in/paytm/grace.v1"
 )
 
 func main() {
@@ -13,6 +16,12 @@ func main() {
 	router := httprouter.New()
 	router.GET("/", CallHTML)
 	router.GET("/ping", HandlePing)
+
+	n := negroni.New()
+	n.UseHandler(router)
+
+	log.Fatal(grace.Serve(fmt.Sprintf(":%s", "9000"), n))
+
 }
 
 func CallHTML(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
